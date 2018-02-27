@@ -19,7 +19,6 @@ Para adicionar ao projeto é só incluir a "MULT4051.cpp" e substituir Sensor po
 
 ```
 #include "MULT4051.cpp"
-
 ```
 
 ### Sobre a MULT4051.cpp
@@ -28,7 +27,6 @@ Ela possui os mesmos métodos da Sensor, só que você terá que inserir alguns 
 
 ```
 sensores_solo.ler(false, false, true);
-
 ```
 
 Esses parâmetros são responsáveis por setar qual sensor será lido, variando de (false, false, false) até (true, true, true).
@@ -36,3 +34,9 @@ Esses parâmetros são responsáveis por setar qual sensor será lido, variando 
 ## Testes
 
 Antes de utilizar tudo em conjunto faça testes unitários.
+
+## Final
+
+Projeto final utilizando o 4051
+
+![alt tag](http://4.bp.blogspot.com/-cREMc7kr-dM/WpWnBCYQ60I/AAAAAAAADxo/tUZWbt2R8rYuTLNWnAZ84nP-NyZN5N_wQCK4BGAYYCw/s1600/index.jpg)
