@@ -5,7 +5,11 @@ Smart Seedling é um projeto de código aberto que provê algumas funções bás
 
 Este projeto é derivado de um anterior, o Smart Garden, embora seja mais simples ele tem algo diferente do anterior. Nesse novo sistema foi desenvolvido a implementação com um multiplexador, para a leitura de mais sensores. Abaixo mostro como funciona a conexão de com o arduino.
 
-### Conectar com o arduino
+Imagem do projeto sem o Multiplexador:
+
+![alt tag](http://4.bp.blogspot.com/-tkFyCMCa3-Y/WpWjsGy0QBI/AAAAAAAADxc/1qtnzrjQsd0Qhvhyi48994QdLeGokusqwCK4BGAYYCw/s1600/unnamed.png)
+
+### Conectar o multiplexador 4051 no arduino
 
 ![alt tag](http://2.bp.blogspot.com/-Rb70EwOABZE/WpWafmWI_uI/AAAAAAAADxM/ikiXlRldTVcLsLL08iFRx71StUxHOLI5ACK4BGAYYCw/s1600/4051.jpg)
 
