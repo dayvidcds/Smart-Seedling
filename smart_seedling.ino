@@ -1,7 +1,6 @@
 #include <Bounce2.h>
 #include "rele.cpp";
 #include "sensor_umi_solo.cpp";
-#include "MULT4051.cpp"
 
 #define PIN_SOLENOIDE1 2 // Solenoide da caixa
 #define NIVEL_LOGICO_RELE_SOLENOIDE1 LOW
@@ -9,7 +8,7 @@
 #define PIN_BOMBA 3 // Solenoide da bomba
 #define NIVEL_LOGICO_RELE_BOMBA LOW
 
-#define SENSORES_UMI_SOLO A0
+#define SENSOR_UMI_SOLO1 A1
 
 #define SMS_VCC 7
 #define SMS_GND 6
@@ -19,7 +18,9 @@
 Rele solenoide_caixa(PIN_SOLENOIDE1, NIVEL_LOGICO_RELE_SOLENOIDE1);
 Rele bomba(PIN_BOMBA, NIVEL_LOGICO_RELE_BOMBA);
 
-MULT4051 sensores_solo(SENSORES_UMI_SOLO, 9, 10, 11, SMS_VCC, SMS_GND);
+Solo solo1(SENSOR_UMI_SOLO1, SMS_VCC, SMS_GND);
+
+Solo sensores_solo[] = { solo1 };
 
 #define QUANT_SENSORES_SOLO 1
 
@@ -33,7 +34,7 @@ boolean verificarBoia();
 void setup() {
   pinMode(SMS_VCC, OUTPUT);
   pinMode(SMS_GND, OUTPUT); 
-  pinMode(SENSORES_UMI_SOLO, INPUT);
+  pinMode(SENSOR_UMI_SOLO1, INPUT);
   pinMode(PIN_SOLENOIDE1, OUTPUT);
   pinMode(PIN_BOMBA, OUTPUT);
   pinMode(9, OUTPUT);
@@ -48,6 +49,7 @@ void setup() {
 void loop() {
   int valor = lerSensores(QUANT_SENSORES_SOLO); 
   Serial.println(valor);
+  
   solenoide_caixa.desligar();
   bomba.desligar();
   
@@ -82,8 +84,7 @@ boolean verificarBoia() {
 int lerSensores(int quant_sensores) {
   int soma = 0;
   for (int i = 0; i < quant_sensores; i++) {
-    soma += sensores_solo.ler(false, false, true);
+    soma += sensores_solo[i].ler();
   }
   return soma / quant_sensores;
 }
-
