@@ -24,7 +24,8 @@ Solo sensores_solo[] = { solo1 };
 
 #define QUANT_SENSORES_SOLO 1
 
-#define TEMPO_ESPERA 3000
+#define TEMPO_ENCHARCAMENTO 3000
+#define TEMPO_DRENAGEM 3000
  
 Bounce debouncer = Bounce();
 
@@ -47,11 +48,12 @@ void setup() {
 }
  
 void loop() {
-  int valor = lerSensores(QUANT_SENSORES_SOLO); 
-  Serial.println(valor);
-  
+
   solenoide_caixa.desligar();
   bomba.desligar();
+  
+  int valor = lerSensores(QUANT_SENSORES_SOLO); 
+  Serial.println(valor);
   
   if (valor < VALOR_SOLO_SECO) {
     solenoide_caixa.desligar();
@@ -62,12 +64,12 @@ void loop() {
        delay(100);
     }
     bomba.desligar();
-    delay(TEMPO_ESPERA);
+    delay(TEMPO_ENCHARCAMENTO);
     solenoide_caixa.ligar();
-    delay(TEMPO_ESPERA);
+    delay(TEMPO_DRENAGEM);
   }
   
-  delay(100);
+  delay(50);
 }
 
 boolean verificarBoia() {
